@@ -28,7 +28,7 @@ pre-push:
     typecheck:
       run: pnpm tsc --noEmit
     test-ui:
-      run: pnpm vitest run
+      run: pnpm test
     test-rust:
       glob: "*.rs"
       run: cargo test --manifest-path src-tauri/Cargo.toml
