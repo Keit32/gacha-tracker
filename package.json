@@ -2,7 +2,7 @@
   "name": "gacha-tracker",
   "private": true,
   "version": "0.1.0",
-  "description": "Local-first desktop tracker for Zenless Zone Zero: archive your pull history, endgame runs, and builds.",
+  "description": "Local-first desktop tracker for gacha games: archive your pull history, endgame runs, and builds.",
   "author": "Keit",
   "license": "GPL-3.0-or-later",
   "repository": {
