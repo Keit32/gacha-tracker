@@ -1,0 +1,7 @@
+# Normalize line endings so Biome and diffs behave the same on Windows, macOS and Linux
+* text=auto eol=lf
+
+*.png binary
+*.ico binary
+*.icns binary
+*.woff2 binary

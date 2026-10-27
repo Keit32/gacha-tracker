@@ -1,0 +1,36 @@
+min_version: 1.10.0
+
+pre-commit:
+  parallel: true
+  skip:
+    - merge
+    - rebase
+  commands:
+    biome:
+      glob: "*.{js,jsx,ts,tsx,json,jsonc,css}"
+      run: pnpm biome check --write --no-errors-on-unmatched --files-ignore-unknown=true {staged_files}
+      stage_fixed: true
+    rustfmt:
+      glob: "*.rs"
+      run: cargo fmt --manifest-path src-tauri/Cargo.toml --all
+      stage_fixed: true
+    clippy:
+      glob: "*.rs"
+      run: cargo clippy --manifest-path src-tauri/Cargo.toml --all-targets -- -D warnings
+
+commit-msg:
+  commands:
+    commitlint:
+      run: pnpm commitlint --edit {1}
+
+pre-push:
+  commands:
+    typecheck:
+      run: pnpm tsc --noEmit
+    test-ui:
+      run: pnpm vitest run
+    test-rust:
+      glob: "*.rs"
+      run: cargo test --manifest-path src-tauri/Cargo.toml
+    machete:
+      run: cd src-tauri && cargo machete
